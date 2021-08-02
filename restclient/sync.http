@@ -1,0 +1,48 @@
+# -*- restclient -*-
+#
+# Gets  all Github APIs, formats JSON, shows response status and headers underneath.
+# Also sends a User-Agent header, because the Github API requires this.
+#
+GET https://api.github.com
+User-Agent: Emacs Restclient
+
+#
+# XML is supported - highlight, pretty-print
+#
+GET http://www.redmine.org/issues.xml?limit=10
+
+#
+# It can even show an image!
+#
+GET http://upload.wikimedia.org/wikipedia/commons/6/63/Wikipedia-logo.png
+#
+# A bit of json GET, you can pass headers too
+#
+GET http://jira.atlassian.com/rest/api/latest/issue/JRA-9
+User-Agent: Emacs24
+Accept-Encoding: compress, gzip
+
+#
+# Post works too, entity just goes after an empty line. Same is for PUT.
+#
+POST https://jira.atlassian.com/rest/api/2/search
+Content-Type: application/json
+
+{
+        "jql": "project = HCPUB",
+        "startAt": 0,
+        "maxResults": 15,
+        "fields": [
+                "summary",
+                "status",
+                "assignee"
+        ]
+}
+#
+# And delete, will return not-found error...
+#
+DELETE https://jira.atlassian.com/rest/api/2/version/20
+
+# Set a variable to the value of your ip address using a jq expression
+GET http://httpbin.org/ip
+-> jq-set-var :my-ip .origin
