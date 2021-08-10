@@ -7,12 +7,12 @@
    [com.walmartlabs.lacinia.util :as util]
    [com.walmartlabs.lacinia.schema :as schema]))
 
-(defn- resolve-game-by-id
+(defn resolve-game-by-id
   [games-map context args value]
   (let [{:keys [id]} args]
     (get games-map id)))
 
-(defn- resolver-map []
+(defn resolver-map []
   (let [cgg-data (-> "cgg-data.edn"
                      (io/resource)
                      slurp
@@ -20,7 +20,8 @@
         games-map (->> cgg-data
                       :games
                       (reduce #(assoc %1 (:id %2) %2) {}))]
-    {:query/game-by-id (partial resolve-game-by-id games-map)}))
+    {:query/game-by-id
+     (partial resolve-game-by-id games-map)}))
 
 (defn load-schema
   []

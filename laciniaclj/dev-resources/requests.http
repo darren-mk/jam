@@ -1,0 +1,9 @@
+POST https://api.spacex.land/graphql/
+Content-Type: application/json
+'{"query":"query {\n  launchesPast(limit: 10) {\n    mission_name\n    launch_date_local\n    launch_site {\n      site_name_long\n    }\n  }\n}","variables":{}}'
+
+
+
+curl --location --request POST 'https://api.spacex.land/graphql/' \
+--header 'Content-Type: application/json' \
+--data-raw '{"query":"query {\n  launchesPast(limit: 10) {\n    mission_name\n    launch_date_local\n    launch_site {\n      site_name_long\n    }\n  }\n}","variables":{}}'
