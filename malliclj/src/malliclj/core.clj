@@ -1,7 +1,9 @@
 (ns malliclj.core
   (:require
    [malli.core :as m]
-   [malli.instrument :as mi]))
+   [malli.instrument :as mi]
+   [malli.generator :as mg]
+   [clojure.spec.alpha :as s]))
 
 (defn square [x] (* x x))
 (m/=> square [:=> [:cat int?] nat-int?])
@@ -13,3 +15,33 @@
 
 ;; has to be run after individual m-function is loaded.
 (mi/instrument!)
+
+(def ttt
+  [:orn
+   [:nil nil?]
+   [:boolean boolean?]
+   [:number number?]
+   [:text string?]])
+
+(mg/generate ttt)
+
+(def bbb
+  [:or nil? boolean?])
+
+(def p1
+  (fn [x] (* x x)))
+
+(def p2
+  (m/-instrument
+   {:schema [:=> [:cat :int] :int]}
+   (fn [x] (* x x))))
+
+(defn p3
+  [x]
+  {:pre [(s/valid? int? x)]
+   :post [(s/valid? int? %)]}
+  (* x x))
+
+(time (p1 8))
+(time (p2 8))
+(time (p3 8))
