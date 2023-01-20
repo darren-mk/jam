@@ -28,7 +28,7 @@ main = do
   let port = 3000
       settings =
         setPort port $
-        setBeforeMainLoop (hPutStrLn stderr ("listening on port " ++ show port)) $
+        setBeforeMainLoop (hPutStrLn stderr ("listening on port " ++ show port))
         defaultSettings
   runSettings settings =<< mkApp
 
@@ -49,15 +49,14 @@ getItemById = \ case
   _ -> throwError err404
 
 exampleItem :: Item
-exampleItem = Item 0 "example item"
+exampleItem = Item 123 "example item"
 
 -- * item
 
 data Item
   = Item {
     itemId :: Integer,
-    itemText :: String
-  }
+    itemText :: String }
   deriving (Eq, Show, Generic)
 
 instance ToJSON Item
