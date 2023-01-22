@@ -2,3 +2,17 @@
 .clj-kondo
 .DS_Store
 elm-stuff
+target
+lib
+classes
+checkouts
+pom.xml
+pom.xml.asc
+*.jar
+*.class
+.lein-deps-sum
+.lein-failures
+.lein-plugins
+.lein-repl-history
+.nrepl-port
+.cpcache
