@@ -1,3 +1,4 @@
-/.lsp
-/.clj-kondo
+.lsp
+.clj-kondo
 .DS_Store
+elm-stuff
