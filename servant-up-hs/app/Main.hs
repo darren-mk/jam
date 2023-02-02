@@ -5,21 +5,23 @@
 
 module Main where
 
-import           Data.Aeson
-import           GHC.Generics
-import           Network.Wai
-import           Network.Wai.Handler.Warp
-import           Servant
-import           System.IO
+import Data.Aeson
+import GHC.Generics
+import Network.Wai
+import Network.Wai.Handler.Warp
+import Servant
+import System.IO
 
 -- * api
 
-type ItemApi =
+type TotalApi =
+  "user" :> Get '[JSON] [User] :<|>
   "item" :> Get '[JSON] [Item] :<|>
   "item" :> Capture "itemId" Integer :> Get '[JSON] Item
 
-itemApi :: Proxy ItemApi
-itemApi = Proxy
+totalApi :: Proxy TotalApi
+totalApi = Proxy
+
 
 -- * app
 
@@ -33,10 +35,11 @@ main = do
   runSettings settings =<< mkApp
 
 mkApp :: IO Application
-mkApp = return $ serve itemApi server
+mkApp = return $ serve totalApi server
 
-server :: Server ItemApi
+server :: Server TotalApi
 server =
+  getUsers :<|>
   getItems :<|>
   getItemById
 
@@ -51,6 +54,13 @@ getItemById = \ case
 exampleItem :: Item
 exampleItem = Item 123 "example item"
 
+exampleUser :: User
+exampleUser = User 1 "Darren" "Kim"
+
+getUsers :: Handler [User]
+getUsers = return [exampleUser]
+
+
 -- * item
 
 data Item
@@ -62,6 +72,11 @@ data Item
 instance ToJSON Item
 instance FromJSON Item
 
-data a + b = Foo a b
-
-type X = Int + Bool
+data User = User 
+  { id :: Int
+  , firstName :: String
+  , lastName :: String }
+  deriving (Eq, Show, Generic)
+  
+instance ToJSON User
+instance FromJSON User
