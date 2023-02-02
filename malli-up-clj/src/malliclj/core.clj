@@ -3,7 +3,8 @@
    [malli.core :as m]
    [malli.instrument :as mi]
    [malli.generator :as mg]
-   [clojure.spec.alpha :as s]))
+   [clojure.spec.alpha :as s]
+   [malliclj.sub :as sub]))
 
 (defn square [x] (* x x))
 (m/=> square [:=> [:cat int?] nat-int?])
@@ -15,6 +16,10 @@
 
 ;; has to be run after individual m-function is loaded.
 (mi/instrument!)
+
+;; once instrument is on at one place
+;; it is applicable everywhere
+(sub/pass-thru "xyz")
 
 (def ttt
   [:orn
