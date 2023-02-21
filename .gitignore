@@ -4,6 +4,8 @@
 elm-stuff
 target
 lib
+obj
+bin
 classes
 checkouts
 pom.xml

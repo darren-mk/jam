@@ -60,9 +60,6 @@ exampleUser = User 1 "Darren" "Kim"
 getUsers :: Handler [User]
 getUsers = return [exampleUser]
 
-
--- * item
-
 data Item
   = Item {
     itemId :: Integer,
