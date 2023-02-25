@@ -1,15 +1,16 @@
-(ql:quickload '(:hunchentoot :babel :jonathan :jose :arrow-macros :yason))
+(ql:quickload '(:hunchentoot :babel :jonathan :jose :arrow-macros :serapeum))
 
-(defvar *key* (ironclad:ascii-string-to-byte-array "my$ecret"))
+(setf *print-case* :downcase)
 
-(defvar *token* (jose:encode :hs256 *key* '(("question" . "answer"))))
-;; CL-USER> *token*
-;; "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJxdWVzdGlvbiI6ImFuc3dlciJ9.fkC4bywF9TWUWO-mMyQ1CoNbPc7ZxbAC_T47l-W8cX8"
+(defparameter *key*
+  (ironclad:ascii-string-to-byte-array "my-temp-secret"))
 
-;; (jose:decode :hs256 *key* *token)
-;; CL-USER> (jose:decode :hs256 *key* *token*)
-;; (("question" . "answer"))
-;; (("alg" . "HS256") ("typ" . "JWT"))
+(defparameter *token*
+  (jose:encode :hs256 *key* '((:email . "abc@def.com")
+                              (:stamp . (get-universal-time)))))
+
+(defparameter decoded
+  (jose:decode :hs256 *key* *token*))
 
 (defun authenticate (token)
   (print token)
@@ -21,15 +22,47 @@
   (let ((f (lambda (pair) (eq :authorization (car pair)))))
     (arrow-macros:-> (remove-if-not f headers) car cdr)))
 
+(defclass user ()
+  ((id :type integer :initarg :id :accessor id-of)
+   (name :type string :initarg :name :accessor name-of)))
+
+(defparameter darren
+  (make-instance 'user :id "abc123" :name "Darren Kim"))
+
+(defmethod alistify ((user user))
+  (let ((id (id-of user))
+        (name (name-of user)))
+   `((:id . ,id) (:name . ,name))))
+
+(defmethod jsonify (alist)
+  (jonathan:to-json alist :from :alist))
+
+(defmethod %to-json ((user user))
+  (jonathan:with-object
+    (jonathan:write-key-value "id" (slot-value user 'id))
+    (jonathan:write-key-value "name" (slot-value user 'name))))
+
+;; (jonathan:to-json (make-instance 'user :id 1 :name "Rudolph"))
+;; => "{\"id\":1,\"name\":\"Rudolph\"}"
+
+(defvar unauthorized-msg
+  '((:result . "unauthorized")))
+
 (hunchentoot:define-easy-handler (analyze :uri "/api/analyze") ()
   (let* ((headers (hunchentoot:headers-in*))
          (token (cdr (assoc :authorization headers)))
          (authenticated? (authenticate token)))
     (setf (hunchentoot:content-type*) "application/json")
     (if authenticated?
-        (jonathan:to-json '((:result . "authorized")) :from :alist)
-        (jonathan:to-json '((:result . "unauthorized")) :from :alist))))
+        (arrow-macros:-> darren alistify jsonify)
+        (jsonify unauthorized-msg))))
 
 (defvar *server* (make-instance 'hunchentoot:easy-acceptor :port 6789))
 
-(hunchentoot:start *server*)
+(defun start ()
+    (print "server started.")
+    (hunchentoot:start *server*))
+
+(defun stop ()
+    (print "server stopped.")
+    (hunchentoot:stop *server*))
