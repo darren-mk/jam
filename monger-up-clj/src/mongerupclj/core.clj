@@ -32,3 +32,18 @@
       s (str oid)
       soid (ObjectId. s)]
   (= oid soid))
+
+(mc/insert db :consumer {:_id (ObjectId.)
+                         :fname "Jackie" :lname "Chan"
+                         :email "darrenkim@email.com"
+                         :lucky-number 27
+                         :gender "male"})
+
+(def jackie-oid
+  (-> (mc/find-maps db :consumer {:consumer/fname "Jackie"})
+      first
+      :_id))
+
+(mc/update-by-id db :consumer jackie-oid {:email "jackiechan@email.com"})
+
+(mc/find-maps db :consumer {:_id jackie-oid})
