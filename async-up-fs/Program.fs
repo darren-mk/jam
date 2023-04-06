@@ -1,5 +1,9 @@
 ﻿open System
-open Timers
+open System.Timers
+
+#if INTERACTIVE
+#r "nuget: Npgsql.FSharp, 5.6.0"
+#endif
 
 let timer: Timer = new Timer(2000.0)
 

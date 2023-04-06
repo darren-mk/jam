@@ -7,6 +7,8 @@
 
 (def ds (jdbc/get-datasource db))
 
+;; table schema
+
 (jdbc/execute!
  ds [(str "create table address ("
           "id serial primary key, "
@@ -27,3 +29,17 @@
 ;; "Elapsed time: 18.861334 msecs"
 ;; "Elapsed time: 15.300458 msecs"
 ;; "Elapsed time: 26.232042 msecs"
+
+;; jsonb
+
+(jdbc/execute!
+ ds [(str "create table food ("
+          "id serial primary key, "
+          "blob jsonb)")])
+
+(time
+ (jdbc/execute!
+  ds [(str "insert into food (blob) values "
+           (str/join ", " (mapv (fn [i] (str "('name-" i "', 'email-" i "')"))
+                                (range 10000))))]))
+
