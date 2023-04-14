@@ -1,17 +1,16 @@
 (ns typedupclj.core
   (:require
    [malli.core :as m]
+   [typedupclj.model :as model]
    [typed.clojure :as t]))
 
 (defn pass [x]
   x)
 (m/=> pass [:=> [:cat :int] :int])
 
-(def address
-   [:map
-     [:street string?]
-     [:city string?]
-     [:zip int?]])
+(defn hello [a]
+  a)
+(t/ann hello [t/Int :-> t/Int])
 
 (defn insert [y]
   (if (odd? y)
@@ -21,12 +20,8 @@
 
 (defn get-street [a]
   (:street a))
-(m/=> get-street [:=> [:cat address] :string])
-
-(get-street {:street "abc"
-             :city "def"
-             :zip 12345})
+(m/=> get-street [:=> [:cat model/address] :string])
 
 (comment
   (time
-   (t/check-ns-clj 'typedupclj.core)))
+   (t/cns 'typedupclj.core)))
