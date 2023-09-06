@@ -5,3 +5,8 @@
    [:street string?]
    [:city string?]
    [:zip int?]])
+
+(def address-subset
+  [:map
+   [:street string?]
+   [:city string?]])

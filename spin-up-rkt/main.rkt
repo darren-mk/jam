@@ -17,4 +17,13 @@
 (define app null)
 
 (define (go)
+  (display "server started.")
   (set! app (thread (lambda () (run)))))
+
+(define (stop)
+  (display "server stopped.")
+  (set! app null))
+
+(define (restart)
+  (stop)
+  (go))

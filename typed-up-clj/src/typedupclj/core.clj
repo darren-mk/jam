@@ -1,27 +1,71 @@
 (ns typedupclj.core
   (:require
    [malli.core :as m]
-   [typedupclj.model :as model]
    [typed.clojure :as t]))
 
-(defn pass [x]
-  x)
-(m/=> pass [:=> [:cat :int] :int])
+(def Address
+  [:map
+   [:address/street string?]
+   [:address/city string?]
+   [:address/zip int?]])
 
-(defn hello [a]
-  a)
-(t/ann hello [t/Int :-> t/Int])
+(defn step-up-zip [address]
+  (update address :address/zip inc))
 
-(defn insert [y]
-  (if (odd? y)
-    (pass y)
-    (pass 1)))
-(m/=> insert [:=> [:cat :int] :int])
+(m/=> step-up-zip
+  [:=> [:cat Address] Address])
 
-(defn get-street [a]
-  (:street a))
-(m/=> get-street [:=> [:cat model/address] :string])
+(step-up-zip {:address/city "Totowa"
+              :address/street "First 123"
+              :address/zip 12345})
 
 (comment
-  (time
-   (t/cns 'typedupclj.core)))
+  (require '[malli.instrument :as mi])
+  (mi/instrument!))
+
+
+#_
+(t/cns 'typedupclj.core)
+
+
+
+
+
+
+
+#_#_
+(defn pass [x y]
+  (if y
+    (* x 2)
+    (/ x 2)))
+(m/=> pass [:=> [:cat :int] :int])
+
+#_
+(defn get-street [a]
+  (if (> (:zip a) 5)
+    (update a :zip inc)
+    (update a :zip dec)))
+
+#_
+(m/=> get-street [:=> [:cat model/address]
+                  model/address])
+
+
+
+#_
+(m/=> step-up [:=> [:cat Address] Address])
+
+
+#_
+(defn buzz [n]
+  (* n 2))
+#_(m/=> buzz [:=> [:cat [:and :int [:> 4]]]
+            [:and :int [:< 21]]])
+#_#_
+(defn fuzz [n]
+  (* n 3))
+(m/=> fuzz [:=> [:cat [:and :int [:> 29]]] [:and :int [:> 98]]])
+
+#_
+(def i
+  (-> 6 buzz fuzz))
