@@ -1,0 +1,17 @@
+<html>
+  <body>
+    <script>
+      window.onload = () => {
+        const BACKEND_URL = "ws://0.0.0.0:8080/websocket"
+        const socket = new WebSocket(BACKEND_URL)
+        socket.onopen = () => {
+          console.log("socket opened")
+          setInterval(_ => socket.send("hello f#"), 3000)
+        }
+        socket.onmessage = (msg) => alert(msg.data)
+        socket.onerror = (err) => console.err(err)
+        socket.onclose = () => console.log("socket closed")
+      }
+    </script>
+  </body>
+</html>
