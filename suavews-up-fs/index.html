@@ -2,7 +2,7 @@
   <body>
     <script>
       window.onload = () => {
-        const BACKEND_URL = "ws://0.0.0.0:8080/websocket"
+        const BACKEND_URL = "ws://localhost:12345/bongo"
         const socket = new WebSocket(BACKEND_URL)
         socket.onopen = () => {
           console.log("socket opened")
