@@ -21,3 +21,4 @@ pom.xml.asc
 dist-newstyle
 .fake
 *.fasl
+.idea
