@@ -6,11 +6,11 @@ type RecordType = {
     stringMember: string
     intMember: int }
 
-let data: RecordType = { 
+let datum: RecordType = { 
   stringMember = "The string"; 
   intMember = 123 }
 
-let json = Json.serialize data
+let json = Json.serialize datum
 
 let s = 
   """
