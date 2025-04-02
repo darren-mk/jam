@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <style>
+         .tooltip {
+             position: relative;
+             cursor: pointer;
+         }
+         .tooltip::after {
+             content: attr(data-tooltip);
+             position: absolute;
+             bottom: 100%;
+             left: 50%;
+             transform: translateX(-50%);
+             background-color: black;
+             color: white;
+             padding: 5px 8px;
+             border-radius: 4px;
+             font-size: 12px;
+             white-space: nowrap;
+             opacity: 0;
+             visibility: hidden;
+             transition: opacity 0.2s ease-in-out;
+         }
+         .tooltip:hover::after {
+             opacity: 1;
+             visibility: visible;
+         }
+        </style>
+    </head>
+    <body>
+        <button class="tooltip"
+                data-tooltip="This is a tooltip!">
+            Hover me
+        </button>
+        <script>
+         document.addEventListener("DOMContentLoaded", () => {
+             document.querySelectorAll(".tooltip").forEach(el => {
+                 el.addEventListener("mouseenter", () => {
+                     el.setAttribute("data-show", "true");
+                 });
+                 el.addEventListener("mouseleave", () => {
+                     el.removeAttribute("data-show");
+                 });
+             });
+         });
+        </script>
+    </body>
+</html>
