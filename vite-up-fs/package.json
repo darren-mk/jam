@@ -1,0 +1,9 @@
+{
+    "scripts": {
+        "watch": "dotnet fable watch --verbose --run npx vite",
+        "build": "dotnet fable --run npx vite build"
+    },
+    "devDependencies": {
+        "vite": "^6.2.4"
+    }
+}
