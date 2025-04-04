@@ -1,0 +1,6 @@
+bin
+obj
+node_modules
+pnpm-lock.yaml
+*.fs.js
+dist
