@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:latest
+    container_name: dapper_up_fs
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: localuser
+      POSTGRES_PASSWORD: localpass
+      POSTGRES_DB: dapper_up_fs_db
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
