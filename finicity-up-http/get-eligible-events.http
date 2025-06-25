@@ -1,0 +1,53 @@
+GET https://api.finicity.com/notification-subscriptions/webhooks/events
+Accept: application/json
+Finicity-App-Key: <app-key>
+Finicity-App-Token: <token>
+
+# {
+#   "events": [
+#     {
+#       "name": "connect-components.mfa.accepted",
+#       "description": "This webhook is emitted when the MFA challenge response is received and successfully processed. This webhook does not contain any account information."
+#     },
+#     {
+#       "name": "connect-components.legacy-user-login.submitted",
+#       "description": "This webhook indicates an acknowledgement that the system has received and processed the user-provided credentials (i.e. username and password) for the given financial institution. This webhook does not indicate success or failure of processing."
+#     },
+#     {
+#       "name": "connect-components.legacy-user-login.accepted",
+#       "description": "This webhook is emitted when the user-provided credentials have been successfully processed by the financial institution. This webhook indicates a successful status, but does not return any account data."
+#     },
+#     {
+#       "name": "connect-components.legacy-user-login.rejected",
+#       "description": "This webhook is emitted when the user-provided credentials do not result in a successful connection to a user's accounts. This may be due to factors such as invalid credentials or bank connectivity issues. The 'code' provided in the webhook may be used to determine the cause of the failure."
+#     },
+#     {
+#       "name": "connect-components.mfa.submitted",
+#       "description": "This webhook is emitted when the platform has received the response to the MFA challenge. This webhook will be sent prior to processing the MFA challenge response and does not indicate success of failure."
+#     },
+#     {
+#       "name": "connect-components.mfa.required",
+#       "description": "This webhook indicates that the financial institution received and processed the end-user's login credentials, but the institution requires additional multi-factor authentication before returning accounts. This webhook may be emitted multiple times during the user’s interaction with an institution. The webhook payload contains the information needed to render the MFA form using the Components SDK."
+#     },
+#     {
+#       "name": "connect-components.mfa.rejected",
+#       "description": "This webhook is emitted when the financial institution is unable to process the MFA response provided. This may be due to an incorrect response to the MFA challenge, or an error with the connection. The 'code' provided in the webhook may be used to determine the cause of the failure."
+#     },
+#     {
+#       "name": "connect-components.oauth-user-login.accepted",
+#       "description": "This webhook is emitted when our aggregation platform has received the authorization token and is preparing to discover and add accounts."
+#     },
+#     {
+#       "name": "connect-components.oauth-user-login.submitted",
+#       "description": "This webhook is emitted when the end-user has completed their journey through an OAuth login, prior to account discovery and activation. This webhook coincides with the initial OAuth redirection back to the calling application."
+#     },
+#     {
+#       "name": "connect-components.oauth-user-login.failed",
+#       "description": "This webhook indicates a failure to perform account discovery and activation for OAuth connections. Because of the nature of OAuth connections, errors involving bad login credentials are never reported using this webhook. Instead, this webhook may provide information regarding platform errors or a failure to receive proper consent from the end-user in certain flows."
+#     },
+#     {
+#       "name": "connect-components.accounts.added",
+#       "description": "This is the final webhook sent during a user’s interacting with an institution and represents a successful account discovery and activation for the user’s accounts. This webhook contains an array of ids indicating the accounts discovered and their associated institution login id."
+#     }
+#   ]
+# }

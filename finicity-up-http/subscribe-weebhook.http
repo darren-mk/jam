@@ -1,0 +1,83 @@
+POST https://api.finicity.com/notification-subscriptions/webhooks
+Accept: application/json
+Content-Type: application/json
+Finicity-App-Key: <app-key>
+Finicity-App-Token: <token>
+X-External-Request-Id: <uuid>
+
+{
+    "url": "https://...",
+    "events": [
+        { "name": "connect-components.mfa.accepted" },
+        { "name": "connect-components.legacy-user-login.submitted" },
+        { "name": "connect-components.legacy-user-login.accepted" },
+        { "name": "connect-components.legacy-user-login.rejected" },
+        { "name": "connect-components.mfa.submitted" },
+        { "name": "connect-components.mfa.required" },
+        { "name": "connect-components.mfa.rejected" },
+        { "name": "connect-components.oauth-user-login.accepted" },
+        { "name": "connect-components.oauth-user-login.submitted" },
+        { "name": "connect-components.oauth-user-login.failed" },
+        { "name": "connect-components.accounts.added" }
+    ]
+}
+
+# {
+#   "subscriptionId": "01979ddd-3439-7ead-b44d-e3cdbfa47b8e",
+#   "url": "https://...",
+#   "events": [
+#     {
+#       "webhookEventId": "01979ddd-343b-709c-b048-7c565593ae8f",
+#       "name": "connect-components.mfa.accepted",
+#       "status": "pending"
+#     },
+#     {
+#       "webhookEventId": "01979ddd-343b-7436-8bc6-f216e81a172a",
+#       "name": "connect-components.legacy-user-login.submitted",
+#       "status": "pending"
+#     },
+#     {
+#       "webhookEventId": "01979ddd-343b-7f8d-9072-a7e7b13b4bdc",
+#       "name": "connect-components.legacy-user-login.accepted",
+#       "status": "pending"
+#     },
+#     {
+#       "webhookEventId": "01979ddd-343b-7af9-945e-536893c67f18",
+#       "name": "connect-components.legacy-user-login.rejected",
+#       "status": "pending"
+#     },
+#     {
+#       "webhookEventId": "01979ddd-343b-7db1-b44b-f8c12639b99e",
+#       "name": "connect-components.mfa.submitted",
+#       "status": "pending"
+#     },
+#     {
+#       "webhookEventId": "01979ddd-343b-706a-bbc3-9736d11f91ce",
+#       "name": "connect-components.mfa.required",
+#       "status": "pending"
+#     },
+#     {
+#       "webhookEventId": "01979ddd-343b-7cf4-9d70-44821c184b58",
+#       "name": "connect-components.mfa.rejected",
+#       "status": "pending"
+#     },
+#     {
+#       "webhookEventId": "01979ddd-343b-7148-bdce-f9588b35743e",
+#       "name": "connect-components.oauth-user-login.accepted",
+#       "status": "pending"
+#     },
+#     {
+#       "webhookEventId": "01979ddd-343b-70f5-a9d5-c047b97b4e42",
+#       "name": "connect-components.oauth-user-login.submitted",
+#       "status": "pending"
+#     },
+#     {
+#       "webhookEventId": "01979ddd-343b-7d49-819c-645e105c3fa5",
+#       "name": "connect-components.oauth-user-login.failed",
+#       "status": "pending"
+#     }
+#   ],
+#   "status": "pending",
+#   "createdDate": "2025-06-23T17:36:49.17Z",
+#   "lastUpdatedDate": "2025-06-23T17:36:49.17Z"
+# }

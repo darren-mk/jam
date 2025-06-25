@@ -1,0 +1,9 @@
+PUT https://api.finicity.com/notification-subscriptions/webhooks/01979ddd-3439-7ead-b44d-e3cdbfa47b8e/status
+Accept: application/json
+Content-Type: application/json
+Finicity-App-Key: <app-key>
+Finicity-App-Token: <token>
+
+{
+  "status": "active"
+}

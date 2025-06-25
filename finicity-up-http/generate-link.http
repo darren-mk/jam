@@ -1,0 +1,12 @@
+POST https://api.finicity.com/connect/v2/generate
+Accept: application/json
+Content-Type: application/json
+Finicity-App-Key: <app-key>
+Finicity-App-Token: <token>
+
+{
+    "partnerId": "...",
+    "customerId": "...",
+    "redirectUri": "https://www.yahoo.com",
+    "webhook": "https://..."
+}

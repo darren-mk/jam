@@ -1,0 +1,163 @@
+GET https://api.finicity.com/aggregation/v1/customers/1019403022/accounts
+Accept: application/json
+Content-Type: application/json
+Finicity-App-Key: <app-key>
+Finicity-App-Token: <token>
+
+{}
+
+# {
+#   "accounts": [
+#     {
+#       "id": "1065827080",
+#       "number": "xx2323",
+#       "realAccountNumberLast4": "2323",
+#       "accountNumberDisplay": "2323",
+#       "name": "ROTH",
+#       "balance": 11001.00,
+#       "type": "roth",
+#       "aggregationStatusCode": 0,
+#       "status": "active",
+#       "customerId": "1019403022",
+#       "institutionId": "102105",
+#       "balanceDate": 1750839663,
+#       "aggregationSuccessDate": 1750839664,
+#       "aggregationAttemptDate": 1750839664,
+#       "createdDate": 1750701866,
+#       "lastUpdatedDate": 1750787860,
+#       "linkedAccountDate": 1750787860,
+#       "currency": "USD",
+#       "lastTransactionDate": 1750839663,
+#       "institutionLoginId": 1033242568,
+#       "detail": {},
+#       "displayPosition": 4,
+#       "accountNickname": "ROTH",
+#       "oldestTransactionDate": 1749297600,
+#       "marketSegment": "personal"
+#     },
+#     {
+#       "id": "1065827081",
+#       "number": "xx1212",
+#       "realAccountNumberLast4": "1212",
+#       "accountNumberDisplay": "1212",
+#       "name": "My 401k",
+#       "balance": 265000.00,
+#       "type": "investmentTaxDeferred",
+#       "aggregationStatusCode": 0,
+#       "status": "active",
+#       "customerId": "1019403022",
+#       "institutionId": "102105",
+#       "balanceDate": 1750839663,
+#       "aggregationSuccessDate": 1750839664,
+#       "aggregationAttemptDate": 1750839664,
+#       "createdDate": 1750701866,
+#       "lastUpdatedDate": 1750731223,
+#       "linkedAccountDate": 1750731223,
+#       "currency": "USD",
+#       "lastTransactionDate": 1750839663,
+#       "institutionLoginId": 1033242568,
+#       "detail": {
+#         "marginBalance": 0.00,
+#         "availableCashBalance": 2000.00,
+#         "currentBalance": 265000.00,
+#         "vestedBalance": 225000.00,
+#         "currentLoanBalance": 25000.00
+#       },
+#       "displayPosition": 3,
+#       "accountNickname": "My 401k",
+#       "oldestTransactionDate": 1733486400,
+#       "marketSegment": "personal"
+#     },
+#     {
+#       "id": "1065827082",
+#       "number": "xx1010",
+#       "realAccountNumberLast4": "1010",
+#       "accountNumberDisplay": "1010",
+#       "name": "Personal Investments",
+#       "balance": 100000.00,
+#       "type": "investment",
+#       "aggregationStatusCode": 0,
+#       "status": "active",
+#       "customerId": "1019403022",
+#       "institutionId": "102105",
+#       "balanceDate": 1750839663,
+#       "aggregationSuccessDate": 1750839664,
+#       "aggregationAttemptDate": 1750839664,
+#       "createdDate": 1750701866,
+#       "lastUpdatedDate": 1750783669,
+#       "linkedAccountDate": 1750783669,
+#       "currency": "USD",
+#       "lastTransactionDate": 1750839663,
+#       "institutionLoginId": 1033242568,
+#       "detail": {
+#         "marginBalance": 0.00,
+#         "availableCashBalance": 1000.00,
+#         "currentBalance": 100000.00,
+#         "vestedBalance": 100000.00,
+#         "currentLoanBalance": 0.00
+#       },
+#       "displayPosition": 2,
+#       "accountNickname": "Personal Investments",
+#       "oldestTransactionDate": 1734609600,
+#       "marketSegment": "personal"
+#     },
+#     {
+#       "id": "1065827083",
+#       "number": "xxxx2203",
+#       "realAccountNumberLast4": "2203",
+#       "accountNumberDisplay": "2203",
+#       "name": "Savings",
+#       "balance": 22327.30,
+#       "type": "savings",
+#       "aggregationStatusCode": 0,
+#       "status": "active",
+#       "customerId": "1019403022",
+#       "institutionId": "102105",
+#       "balanceDate": 1750839663,
+#       "aggregationSuccessDate": 1750839664,
+#       "aggregationAttemptDate": 1750839664,
+#       "createdDate": 1750701866,
+#       "lastUpdatedDate": 1750789778,
+#       "linkedAccountDate": 1750789778,
+#       "currency": "USD",
+#       "lastTransactionDate": 1750839663,
+#       "institutionLoginId": 1033242568,
+#       "detail": {
+#         "availableBalanceAmount": 23327.30
+#       },
+#       "displayPosition": 5,
+#       "accountNickname": "Savings",
+#       "oldestTransactionDate": 1733140800,
+#       "marketSegment": "personal"
+#     },
+#     {
+#       "id": "1065827084",
+#       "number": "xx1111",
+#       "realAccountNumberLast4": "1111",
+#       "accountNumberDisplay": "1111",
+#       "name": "Checking",
+#       "balance": 9357.24,
+#       "type": "checking",
+#       "aggregationStatusCode": 0,
+#       "status": "active",
+#       "customerId": "1019403022",
+#       "institutionId": "102105",
+#       "balanceDate": 1750839663,
+#       "aggregationSuccessDate": 1750839664,
+#       "aggregationAttemptDate": 1750839664,
+#       "createdDate": 1750701866,
+#       "lastUpdatedDate": 1750701879,
+#       "linkedAccountDate": 1750701879,
+#       "currency": "USD",
+#       "lastTransactionDate": 1750839663,
+#       "institutionLoginId": 1033242568,
+#       "detail": {
+#         "availableBalanceAmount": 7234.19
+#       },
+#       "displayPosition": 1,
+#       "accountNickname": "Checking",
+#       "oldestTransactionDate": 1733054400,
+#       "marketSegment": "personal"
+#     }
+#   ]
+# }

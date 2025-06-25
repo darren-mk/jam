@@ -1,0 +1,15 @@
+POST https://api.finicity.com/aggregation/v2/customers/testing
+Accept: application/json
+Content-Type: application/json
+Finicity-App-Key: <app-key>
+Finicity-App-Token: <token>
+
+{
+    "username": "miknerrad"
+}
+
+# {
+#   "id": "...",
+#   "username": "miknerrad",
+#   "createdDate": "1750678740"
+# }

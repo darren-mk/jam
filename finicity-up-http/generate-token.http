@@ -1,0 +1,13 @@
+POST https://api.finicity.com/aggregation/v2/partners/authentication
+Accept: application/json
+Content-Type: application/json
+Finicity-App-Key: <app-key>
+
+{
+    "partnerId": <partner-id>,
+    "partnerSecret": <secret>
+}
+
+#{
+#  "token": "..."
+#}
