@@ -1,0 +1,45 @@
+/* public/css/app.css */
+.grid-table {
+  width: 100%;
+  border-collapse: collapse;   /* single grid lines */
+  table-layout: fixed;         /* optional, nicer column widths */
+}
+
+.grid-table th,
+.grid-table td {
+  border: 1px solid #e5e7eb;   /* light gray grid lines */
+  padding: 8px;
+}
+
+.grid-table thead th {
+  background: #f9fafb;         /* subtle header bg */
+  text-align: left;
+}
+
+/* optional polish */
+.grid-table tbody tr:hover { background: #f5f7fa; }
+
+/* table structure (flex/block layout) */
+.tr { display: flex; }
+.th, .td { position: relative; padding: 8px; border: 1px solid #e5e7eb; }
+.thead .th { background: #f9fafb; text-align: left; }
+
+/* the draggable handle */
+.resizer {
+  position: absolute; right: 0; top: 0;
+  height: 100%; width: 8px;
+  cursor: col-resize; user-select: none; touch-action: none;
+}
+.resizer.isResizing { background: #93c5fd; }
+
+.abc {
+  background-color: lightblue;
+}
+
+.def {
+  background-color: lightgray;
+}
+
+.xyz {
+  background-color: lightyellow;
+}

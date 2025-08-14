@@ -1,0 +1,6 @@
+node_modules
+.clj-kondo
+.shadow-cljs
+yarn.lock
+.calva
+public/js/compiled

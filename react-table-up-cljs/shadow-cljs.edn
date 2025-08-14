@@ -1,0 +1,12 @@
+{:source-paths ["src/cljs"]
+ :dependencies [[binaryage/devtools "0.9.7"]
+                [cider/cider-nrepl "0.52.1"]
+                [reagent "1.3.0"]]
+ :builds {:app {:target :browser
+                :output-dir "public/js/compiled"
+                :asset-path "/js/compiled"
+                :modules {:main {:entries [app.core]}}
+                :devtools {:before-load app.core/stop
+                           :after-load app.core/start
+                           :http-root "public"
+                           :http-port 8700}}}}
