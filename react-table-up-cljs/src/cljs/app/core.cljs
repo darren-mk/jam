@@ -44,12 +44,14 @@
         headerGroups (array-seq (.-headerGroups inst))
         rows (array-seq (.-rows inst))
         prepareRow (.-prepareRow inst)]
-    [:table.def (js->clj (getTableProps) :keywordize-keys true)
-     [:thead.abc
-      (for [hg headerGroups] ^{:key (.-id hg)}
-        [:tr.xyz (js->clj (.getHeaderGroupProps hg) :keywordize-keys true)
-         (for [col (array-seq (.-headers hg))] ^{:key (.-id col)}
-           [:th.xyz (js->clj (.getHeaderProps col) :keywordize-keys true)
+    [:div.table (js->clj (getTableProps) :keywordize-keys true)
+     [:div.thead
+      (for [hg headerGroups]
+        ^{:key (.-id hg)}
+        [:div.tr (js->clj (.getHeaderGroupProps hg) :keywordize-keys true)
+         (for [col (array-seq (.-headers hg))]
+           ^{:key (.-id col)}
+           [:div.th (js->clj (.getHeaderProps col) :keywordize-keys true)
             (.render col "Header")
             (when (.-canResize col)
               (let [rp (js->clj (.getResizerProps col) :keywordize-keys true)
