@@ -1,0 +1,15 @@
+{
+    "name": "solidjs-up-cljs",
+    "private": true,
+    "scripts": {
+        "watch": "shadow-cljs watch app;",
+        "build": "shadow-cljs release app;",
+        "clean": "rm -rf target; rm -rf public/js/compiled"
+    },
+    "devDependencies": {
+        "shadow-cljs": "2.17.8"
+    },
+    "dependencies": {
+        "solid-js": "^1.9.9"
+    }
+}
