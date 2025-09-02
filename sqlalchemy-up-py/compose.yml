@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:latest
+    container_name: sqlalchemy_up_py_db
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: local_user
+      POSTGRES_PASSWORD: local_pass
+      POSTGRES_DB: sqlalchemy_up_py_main_db
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
