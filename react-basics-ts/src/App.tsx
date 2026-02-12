@@ -2,6 +2,14 @@ import { useState } from 'react'
 import './App.css'
 import ToggleButton from './components/ToggleButton'
 
+interface PanelProps {
+  nickname: string;
+}
+
+function Panel({ nickname }: PanelProps) {
+  return <h1>Yo! {nickname}</h1>;
+}
+
 function App() {
   const [count, setCount] = useState(0)
   return (
@@ -11,6 +19,7 @@ function App() {
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
+        <Panel nickname="Darren" />
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
